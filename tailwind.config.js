@@ -11,6 +11,9 @@ module.exports = {
       borderWidth: {
         5: '5px',
       },
+      maxWidth: {
+        37.5: '9,375rem',
+      },
     },
   },
   plugins: [],
