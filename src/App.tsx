@@ -8,14 +8,14 @@ import { useAppDispatch } from './hooks/useAppDispatch'
 import { getPosts } from './store/posts/postsSlice'
 
 const App = () => {
-  const { isAuth, setIsAuth } = useContext(AuthContext)
+  const { isAuth, setIsAuth, user, setUser } = useContext(AuthContext)
 
   const navigate = useNavigate()
   const dispatch = useAppDispatch()
 
   useEffect(() => {
     dispatch(getPosts())
-  }, [])
+  }, [dispatch])
 
   useEffect(() => {
     if (!isAuth) {
@@ -24,11 +24,11 @@ const App = () => {
   }, [isAuth, navigate])
 
   return (
-    <div className="App">
-      <Layout>
+    <div>
+      <Layout setIsAuth={setIsAuth} login={user?.login}>
         <Routes>
-          <Route path="/login" element={<Login />} />
-          <Route path="/posts" element={<Home />} />
+          <Route path="/login" element={<Login setIsAuth={setIsAuth} setUser={setUser} />} />
+          <Route path="/*" element={<Home />} />
         </Routes>
       </Layout>
     </div>

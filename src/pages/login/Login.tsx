@@ -1,22 +1,35 @@
-import React from 'react'
+import React, { FC } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import styles from './Login.module.scss'
+import { IUserData } from '../../hooks/AuthContext'
 
-type Props = {}
+type Props = {
+  setIsAuth: React.Dispatch<React.SetStateAction<boolean>>
+  setUser: React.Dispatch<React.SetStateAction<IUserData | null>>
+}
 
 type Inputs = {
   login: string
   password: string
 }
 
-const Login = (props: Props) => {
+const Login: FC<Props> = ({ setIsAuth, setUser }) => {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<Inputs>({ mode: 'onChange' })
 
-  const onSubmit = (data: any) => console.log(data)
+  const navigate = useNavigate()
+
+  const onSubmit = (data: Inputs) => {
+    if (data.password === 'testTest1') {
+      setUser(data)
+      setIsAuth(true)
+      navigate('/')
+    }
+  }
 
   return (
     <div className={styles.container}>

@@ -7,9 +7,11 @@ import { AuthContext } from '../../hooks/AuthContext'
 
 type Props = {
   children?: ReactNode
+  setIsAuth: React.Dispatch<React.SetStateAction<boolean>>
+  login: string | undefined
 }
 
-const Layout: React.FC<Props> = ({ children }) => {
+const Layout: React.FC<Props> = ({ children, setIsAuth, login }) => {
   const { isAuth } = useContext(AuthContext)
 
   const { innerWidth } = window
@@ -22,9 +24,9 @@ const Layout: React.FC<Props> = ({ children }) => {
         </div>
 
         {isAuth && (
-          <div className={styles.logout}>
-            {innerWidth >= 1440 && <div className={styles.userName}>Username</div>}
-            <img src={Logout} alt="Logout" />
+          <div className={styles.rightPart}>
+            {innerWidth >= 1440 && <div className={styles.userName}>{login}</div>}
+            <img src={Logout} alt="Logout" className={styles.logout} onClick={() => setIsAuth(false)} />
           </div>
         )}
       </header>

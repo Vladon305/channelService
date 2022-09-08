@@ -3,9 +3,7 @@ import Post from '../../components/post/Post'
 import { useTypedSelector } from '../../hooks/useTypedSelector'
 import styles from './Home.module.scss'
 
-type Props = {}
-
-const Home = (props: Props) => {
+const Home = () => {
   const { posts } = useTypedSelector((state) => state.posts)
 
   return (
