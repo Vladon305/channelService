@@ -12,7 +12,7 @@ module.exports = {
         5: '5px',
       },
       maxWidth: {
-        37.5: '9,375rem',
+        37.5: '150px',
       },
     },
   },
