@@ -1,0 +1,20 @@
+.screen {
+  .header {
+    @apply flex justify-between items-center h-28 bg-header;
+
+    .logo {
+      @apply ml-4 md:ml-9 xl:ml-10 rounded-full overflow-hidden sm:overflow-auto sm:rounded-none;
+    }
+
+    .logout {
+      @apply mr-4 md:mr-9 xl:mr-10 flex justify-center items-center;
+
+      .userName {
+        @apply text-2xl font-extrabold mr-8;
+      }
+    }
+  }
+
+  .container {
+  }
+}

@@ -1,26 +1,38 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useContext, useEffect } from 'react'
+import { Routes, Route, useNavigate } from 'react-router-dom'
+import { AuthContext } from './hooks/AuthContext'
+import Home from './pages/home/Home'
+import Login from './pages/login/Login'
+import Layout from './components/layout/Layout'
+import { useAppDispatch } from './hooks/useAppDispatch'
+import { getPosts } from './store/posts/postsSlice'
 
-function App() {
+const App = () => {
+  const { isAuth, setIsAuth } = useContext(AuthContext)
+
+  const navigate = useNavigate()
+  const dispatch = useAppDispatch()
+
+  useEffect(() => {
+    dispatch(getPosts())
+  }, [])
+
+  useEffect(() => {
+    if (!isAuth) {
+      navigate('/login')
+    }
+  }, [isAuth, navigate])
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Layout>
+        <Routes>
+          <Route path="/login" element={<Login />} />
+          <Route path="/posts" element={<Home />} />
+        </Routes>
+      </Layout>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

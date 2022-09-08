@@ -1,0 +1,38 @@
+.container {
+  @apply md:fixed top-0 left-0 w-full h-full flex items-center justify-center content-center;
+
+  .form {
+    @apply m-4 max-w-lg max-h-80 border-5 border-border rounded-md;
+
+    form {
+      @apply flex flex-col justify-between items-center p-8 pt-3 pb-0 md:p-5 md:pb-7 text-2xl font-extrabold;
+    }
+
+    .heading {
+      @apply text-border md:mb-5;
+    }
+
+    .row {
+      @apply flex flex-col md:flex-row justify-center md:justify-between items-center w-full;
+
+      div {
+        @apply my-2;
+      }
+
+      .title {
+      }
+
+      .input {
+        @apply w-full border-4 border-border rounded-lg md:w-72 md:h-11 md:ml-6;
+      }
+    }
+
+    .button {
+      @apply my-5 w-52 h-11 bg-header rounded-lg;
+    }
+
+    .error {
+      @apply text-xl;
+    }
+  }
+}

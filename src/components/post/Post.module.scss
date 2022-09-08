@@ -1,0 +1,23 @@
+.post {
+  @apply mx-4 md:mx-0 mt-3 md:mt-6 p-3 md:p-6 md:max-w-xs xl:max-w-md h-full text-base font-extrabold border-5 border-border rounded-md;
+
+  div {
+    @apply py-2 last:p-0 first:p-0;
+  }
+  .photo {
+    @apply max-w-[150px];
+
+    img {
+      @apply w-full;
+    }
+  }
+
+  .author {
+  }
+  .company {
+  }
+  .title {
+  }
+  .text {
+  }
+}
